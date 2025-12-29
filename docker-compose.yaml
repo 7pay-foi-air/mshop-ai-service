@@ -1,0 +1,17 @@
+services:
+  ai-service:
+    container_name: ai-service
+    build:
+      context: ./mshop-ai-service
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8083:8083"
+    environment:
+      OLLAMA_URL: http://host.docker.internal:11434
+      DISABLE_AUTH: "true"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

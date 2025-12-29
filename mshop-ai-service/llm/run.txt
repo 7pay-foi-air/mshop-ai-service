@@ -1,0 +1,5 @@
+ollama create mshop -f Modelfile
+
+ollama run mshop
+
+ollama stop mshop
