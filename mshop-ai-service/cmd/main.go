@@ -31,6 +31,7 @@ func main() {
 
 	aiClient := ai.NewClient(ollamaURL, ollamaModel)
 	aiHandler := handlers.NewAIHandler(aiClient)
+	coachHandler := handlers.NewCoachHandler(aiClient)
 
 	r := gin.Default()
 
@@ -40,6 +41,7 @@ func main() {
 
 	r.GET("/api/v1/ai", aiHandler.Chat)
 	r.POST("/api/v1/ai", aiHandler.Chat)
+	r.POST("/api/v1/coach", coachHandler.Chat)
 
 	port := os.Getenv("PORT")
 	if port == "" {
